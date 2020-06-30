@@ -1,0 +1,21 @@
+{
+    "MSG_LOGIN_SUCCESS": "Login successfully",
+    "ERR_USER_NOT_FOUND": "User not found",
+    "PERMISSION_ERROR": "You are unauthorized person",
+    "TRY_AGAIN": "Oops! Something went wrong. Please try again",
+    "BAD_REQUEST": "Bad Request",
+    "INVALID_TOKEN": "Invalid Token",
+    "SUCCESS": "Success",
+    "MSG_ADD_SUCCESS": "Add successfully",
+    "MSG_REMOVED_SUCCESS": "Remove successfully",
+    "ERR_PASSWORD_IS_NOT_MATCHED": "Password did not match",
+    "MSG_UPDATE_SUCCESS": "Update successfully",
+    "ERR_EMAIL_ALREADY_EXIST": "Email already exists",
+    "ERROR_PASSWORD_REQUIRED": "Password required",
+    "ERROR_EMAIL_REQUIRED": "Please enter valid email",
+    "ERROR_NAME_REQUIRED": "Please name required",
+    "ERROR_PRODUCT_NAME_REQUIRED": "Please enter product name",
+    "ERROR_PRODUCT_TYPE_REQUIRED": "Please select product type",
+    "ERROR_PRODUCT_ID_REQUIRED": "Product ID missing",
+    "ERROR_PRODUCT_NOT_FOUND": "Product not found"
+}

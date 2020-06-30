@@ -1,0 +1,1 @@
+sequelize model:create --name products --attributes "productName:string, type:string, description:string, userId:integer"
