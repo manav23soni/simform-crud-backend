@@ -30,7 +30,8 @@ productCtr.addUserProducts = async (req, res) => {
         message: req.t("MSG_ADD_SUCCESS"),
         data: addProduct || {},
         code: STANDARD.SUCCESS,
-        path: req.url,
+        path: req.originalUrl,
+        method: req.method
       });
     }
     return res.status(ERROR500.CODE).json({
@@ -38,7 +39,7 @@ productCtr.addUserProducts = async (req, res) => {
       code: ERROR500.CODE,
     });
   } catch (error) {
-    logger.error("[ERROR] From Main signUp API catch", err);
+    logger.error("[ERROR] From Main add product API catch", error);
     return res.status(ERROR500.CODE).json({
       error: req.t("TRY_AGAIN"),
       code: ERROR500.CODE,
@@ -71,7 +72,8 @@ productCtr.editUserProducts = async (req, res) => {
       return res.status(STANDARD.SUCCESS).json({
         message: req.t("MSG_UPDATE_SUCCESS"),
         code: STANDARD.SUCCESS,
-        path: req.url,
+        path: req.originalUrl,
+        method: req.method
       });
     }
     return res.status(ERROR500.CODE).json({
@@ -79,7 +81,7 @@ productCtr.editUserProducts = async (req, res) => {
       code: ERROR500.CODE,
     });
   } catch (error) {
-    logger.error("[ERROR] From Main signUp API catch", err);
+    logger.error("[ERROR] From Main edit product API catch", error);
     return res.status(ERROR500.CODE).json({
       error: req.t("TRY_AGAIN"),
       code: ERROR500.CODE,
@@ -98,17 +100,18 @@ productCtr.editUserProducts = async (req, res) => {
  */
 productCtr.removeUserProductById = async (req, res) => {
   try {
-    const { body: product } = req;
+    const { params: productId } = req;
 
-    await productService.removeProduct(product);
+    await productService.removeProduct(productId);
 
     return res.status(STANDARD.SUCCESS).json({
       message: req.t("MSG_REMOVED_SUCCESS"),
       code: STANDARD.SUCCESS,
-      path: req.url,
+      path: req.originalUrl,
+      method: req.method
     });
   } catch (error) {
-    logger.error("[ERROR] From Main signUp API catch", err);
+    logger.error("[ERROR] From Main delete product API catch", error);
     return res.status(ERROR500.CODE).json({
       error: req.t("TRY_AGAIN"),
       code: ERROR500.CODE,
@@ -127,11 +130,11 @@ productCtr.getAllUserProduct = async (req, res) => {
   try {
     const { pageNo } = req.params;
     const { id } = req.authUserDetails;
-    let limit = process.env.MAX_RECORDS;
+    let limit = +process.env.MAX_RECORDS;
     let pg = 0;
 
     if (utils.isDefined(req.body.pageNo) && parseInt(req.body.pageNo) > 1) {
-      pg = parseInt(req.params.pageNo - 1) * limit;
+      pg = parseInt(pageNo - 1) * limit;
     }
     const getTotalCount = await productService.getTotalProductCount(id);
     const getAllProduct = await productService.getAllProduct(id, pageNo, limit);
@@ -148,7 +151,8 @@ productCtr.getAllUserProduct = async (req, res) => {
         data: getAllProduct || [],
         pagination: pagination,
         code: STANDARD.SUCCESS,
-        path: req.url,
+        path: req.originalUrl,
+        method: req.method
       });
     } else {
       return res.status(STANDARD.SUCCESS).json({
@@ -156,11 +160,12 @@ productCtr.getAllUserProduct = async (req, res) => {
         data: [],
         pagination: pagination,
         code: STANDARD.SUCCESS,
-        path: req.url,
+        path: req.originalUrl,
+        method: req.method
       });
     }
   } catch (error) {
-    logger.error("[ERROR] From Main signUp API catch", error);
+    logger.error("[ERROR] From Main get product API catch", error);
     return res.status(ERROR500.CODE).json({
       error: req.t("TRY_AGAIN"),
       code: ERROR500.CODE,
@@ -186,7 +191,7 @@ productCtr.getProductById = async (req, res) => {
         message: req.t("SUCCESS"),
         data: getProductById,
         code: STANDARD.SUCCESS,
-        path: req.url,
+        path: req.originalUrl,
       });
     } else {
       return res.status(ERROR400.CODE).json({
@@ -195,7 +200,7 @@ productCtr.getProductById = async (req, res) => {
       });
     }
   } catch (error) {
-    logger.error("[ERROR] From Main signUp API catch", err);
+    logger.error("[ERROR] From Main get product by Id API catch", error);
     return res.status(ERROR500.CODE).json({
       error: req.t("TRY_AGAIN"),
       code: ERROR500.CODE,

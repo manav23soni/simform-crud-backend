@@ -45,7 +45,8 @@ userCtr.signUp = async (req, res) => {
       data: result || {},
       token: token,
       code: STANDARD.SUCCESS,
-      path: req.url
+      path: req.originalUrl,
+      method: req.method
     });
   } catch (err) {
     logger.error("[ERROR] From Main signUp API catch", err);
@@ -93,7 +94,8 @@ userCtr.login = async (req, res) => {
           data: user || {},
           token: token,
           code: STANDARD.SUCCESS,
-          path: req.url
+          path: req.originalUrl,
+          method: req.method
         });
       } else {
         // If user is not found

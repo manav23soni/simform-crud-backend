@@ -15,7 +15,7 @@ middleware.userSignUpValidator = () => {
   return [
     check('name', l10n.t('ERROR_NAME_REQUIRED')).exists({ checkFalsy: true }),
     check('email', l10n.t('ERROR_EMAIL_REQUIRED')).isEmail(),
-    check('password', 'Password should not be empty, minimum eight characters, one lowercase character, one uppercase character, a number, and a special character').matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
+    check('password', 'Password should not be empty, minimum eight characters, one lowercase character, one uppercase character, a number, and a special character').matches(/^(?=.*\d)(?=.*[a-z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
     ];
 };
 

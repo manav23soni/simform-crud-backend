@@ -24,13 +24,11 @@ const productEditMiddlewares = [
 productRouter.put("/", productEditMiddlewares);
 
 const productDeleteMiddlewares = [
-  productMiddleware.productDeleteValidator(),
-  validationHandler,
   auth.isAuthenticatedUser,
   productMiddleware.checkProductUser,
   productCtr.removeUserProductById,
 ];
-productRouter.delete("/", productDeleteMiddlewares);
+productRouter.delete("/:productId", productDeleteMiddlewares);
 
 const productGetMiddlewares = [
   auth.isAuthenticatedUser,

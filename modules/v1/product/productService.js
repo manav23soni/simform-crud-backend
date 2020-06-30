@@ -26,7 +26,7 @@ productService.getProductById = (productId) => {
 productService.removeProduct = (product) => {
   return Model.products.destroy({
     where: {
-      id: product.id,
+      id: +product.productId,
     },
   });
 };
@@ -36,8 +36,8 @@ productService.getAllProduct = (userId, page, limit) => {
     where: {
       userId: userId,
     },
-    limit: limit,
-    offset: page,
+    // limit: limit,
+    // offset: +page
   });
 };
 

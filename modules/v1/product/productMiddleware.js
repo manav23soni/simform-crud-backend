@@ -37,7 +37,7 @@ middleware.checkProductUser = async (req, res, next) => {
     const { body: productDetails } = req;
     const {id} = req.authUserDetails;
 
-    const getProduct = await productService.getProductById(productDetails.id)
+    const getProduct = await productService.getProductById(productDetails.id ? productDetails.id : +req.params.productId)
     if (getProduct) {
       if (id === getProduct.userId) {
         return next();
