@@ -15,30 +15,7 @@ const {
 
 const auth = {};
 
-auth.validateUser = (req, res, next) => {
-  // Express headers are auto converted to lowercase
-  const token = req.headers['x-access-token'] || req.headers.authorization;
-  if (token) {
-    jwt.verify(token, process.env.PRIVATE_KEY, (err, decoded) => {
-      if (err) {
-        logger.error('ERROR in validateUser', err);
-        return res.status(ERROR401.CODE).json({
-          error: req.t('INVALID_TOKEN'),
-          code: ERROR401.CODE,
-        });
-      }
-      if (decoded) {
-        return next();
-      }
-    });
-  } else {
-    return res.status(ERROR400.CODE).json({
-      error: req.t('INVALID_TOKEN'),
-      code: ERROR401.CODE,
-    });
-  }
-};
-
+// Authenticate user by token
 auth.isAuthenticatedUser = (req, res, next) => {
   const token = req.headers['x-access-token'] || req.headers.authorization;
   if (!token) {
