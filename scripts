@@ -1,1 +1,2 @@
 sequelize model:create --name products --attributes "productName:string, type:string, description:string, userId:integer"
+sequelize model:create --name routes --attributes "type:string, routeName:string, parameters:string, userId:integer"

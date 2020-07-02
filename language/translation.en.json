@@ -17,5 +17,9 @@
     "ERROR_PRODUCT_NAME_REQUIRED": "Please enter product name",
     "ERROR_PRODUCT_TYPE_REQUIRED": "Please select product type",
     "ERROR_PRODUCT_ID_REQUIRED": "Product ID missing",
-    "ERROR_PRODUCT_NOT_FOUND": "Product not found"
+    "ERROR_PRODUCT_NOT_FOUND": "Product not found",
+    "ERROR_ROUTE_NAME_REQUIRED": "Please enter route name",
+    "ERROR_ROUTE_PARAMETER_REQUIRED": "Please add route parameters",
+    "ROUTE_ALREADY_EXIST": "This route name already exist",
+    "ERROR_ROUTE_NOT_FOUND": "This route not found"
 }

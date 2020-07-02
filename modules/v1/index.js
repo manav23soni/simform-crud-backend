@@ -16,6 +16,7 @@ router.use((req, res, next) => {
 // Routes
 router.use('/user', require('./user/userRoute'));
 router.use('/product', require('./product/productRoute'));
+router.use('/', require('./dynamicRoute/dynamicRoute'));
 
 router.all('/*', (req, res) => {
   logger.info('Error Log');
