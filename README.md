@@ -6,7 +6,20 @@
 
 ```
 npm install
+
+if you get error while npm install you can run this below command to fix that
+
+Use these following commands, this will solve the error:
+
+sudo apt-get install postgresql
+then fire:
+
+sudo apt-get install python-psycopg2
+and last:
+
+sudo apt-get install libpq-dev
 ```
+
 
 ## ENV
 
